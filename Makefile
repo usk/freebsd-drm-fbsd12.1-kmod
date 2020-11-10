@@ -1,7 +1,7 @@
 # Created by: Johannes Dieterich <jmd@FreeBSD.org>
 # $FreeBSD$
 
-PORTNAME=	drm-fbsd12.1-kmod
+PORTNAME=	drm-fbsd12.2-kmod
 PORTVERSION=	5.0.g20200206
 CATEGORIES=	graphics kld
 
@@ -20,6 +20,7 @@ CONFLICTS_INSTALL=	drm-current-kmod \
 			drm-devel-kmod \
 			drm-fbsd11.2-kmod \
 			drm-fbsd12.0-kmod \
+			drm-fbsd12.1-kmod \
 			drm-legacy-kmod
 
 OPTIONS_DEFINE=	DEBUG
@@ -27,14 +28,14 @@ OPTIONS_DEFINE=	DEBUG
 USES=		kmod uidfix compiler:c++11-lang
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	FreeBSDDesktop
+GH_ACCOUNT=	usk
 GH_PROJECT=	kms-drm
-GH_TAGNAME=	847921a
+GH_TAGNAME=	bd74881b5
 
 .include <bsd.port.options.mk>
 
-.if ${OPSYS} == FreeBSD && (${OSVERSION} < 1201000 || ${OSVERSION} > 1300000)
-IGNORE=		only supported on FreeBSD 12.1.
+.if ${OPSYS} == FreeBSD && (${OSVERSION} < 1202000 || ${OSVERSION} > 1300000)
+IGNORE=		only supported on FreeBSD 12.2.
 .endif
 .if ${OPSYS} != FreeBSD
 IGNORE=		not supported on anything but FreeBSD (missing linuxkpi functionality)
